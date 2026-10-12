@@ -1,4 +1,4 @@
-S = CC[x, y, z, MonomialOrder => Lex]
+S = QQ[x, y, z, MonomialOrder => Lex]
 
 f1 = x^2 + y + z + 1
 f2 = x^2 + y^2 + 3*x

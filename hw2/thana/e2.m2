@@ -1,4 +1,4 @@
-R = CC[x,y,z]
+R = QQ[x,y,z]
 
 f1 = x^2 + y + z + 1
 f2 = x^2 + y^2 + 3*x

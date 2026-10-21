@@ -1,4 +1,4 @@
-R = CC[x,y,z,MonomialOrder => Lex];
+R = QQ[x,y,z,MonomialOrder => Lex];
 
 f1 = 5*z^2 - 6*x + 3*y + 10*z - 12;
 f2 = 5*y*z - 6*x + 18*y - 5*z - 12;
@@ -12,4 +12,3 @@ bas = gb ide
 print("The basis contains: ")
 scan(flatten entries gens bas, f -> print f);
 print("")
-print("the solution is x = -2, y = 0, z = 0")

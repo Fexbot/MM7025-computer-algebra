@@ -1,56 +1,28 @@
-print("Lex ordering, x > y > z")
+genList = R -> (
+    use R;
+    {
+        x^2 + x + z,
+        y^2 + x + y^3 + 1,
+        z^2 + x^2 + x
+    }
+);
 
-R = QQ[x,y,z, MonomialOrder => Lex];
+leadingMono = (R, gen) -> (
+    use R;
+    I := ideal(gen);
+    gbList := flatten entries gens gb I;
+    LMTerms := apply(gbList, f -> leadMonomial f);
+    LMTerms
+);
 
-I = ideal(x^2+x+z, y^2+x+y^3+1, z^2+x^2+x);
+print "Lex ordering, y > x > z";
+R1 = QQ[y,x,z, MonomialOrder => Lex];
+g1 = genList(R1);
+print("Leading monomials: " | toString leadingMono(R1, g1));
 
-gbList = flatten entries gens gb I;
+print "";
 
-print("GB Basis: " | toString gbList);
-
-LMTerms = apply(gbList, f -> leadMonomial f);
-
-print("Leading monomials: " | toString LMTerms);
-
-print("")
-print("Lex ordering, y > x > z")
-
-R = QQ[y,x,z, MonomialOrder => Lex];
-
-I = ideal(x^2+x+z, y^2+x+y^3+1, z^2+x^2+x);
-
-gbList = flatten entries gens gb I;
-
-print("GB Basis: " | toString gbList);
-
-LMTerms = apply(gbList, f -> leadMonomial f);
-
-print("Leading monomials: " | toString LMTerms);
-
-print("Lex ordering, x > z > y")
-
-R = QQ[x,z,y MonomialOrder => Lex];
-
-I = ideal(x^2+x+z, y^2+x+y^3+1, z^2+x^2+x);
-
-gbList = flatten entries gens gb I;
-
-print("GB Basis: " | toString gbList);
-
-LMTerms = apply(gbList, f -> leadMonomial f);
-
-print("Leading monomials: " | toString LMTerms);
-
-print("Lex ordering, y > z > x")
-
-R = QQ[y,z,x MonomialOrder => Lex];
-
-I = ideal(x^2+x+z, y^2+x+y^3+1, z^2+x^2+x);
-
-gbList = flatten entries gens gb I;
-
-print("GB Basis: " | toString gbList);
-
-LMTerms = apply(gbList, f -> leadMonomial f);
-
-print("Leading monomials: " | toString LMTerms);
+print "Lex ordering, x > z > y";
+R2 = QQ[x,z,y, MonomialOrder => Lex];
+g2 = genList(R2);
+print("Leading monomials: " | toString leadingMono(R2, g2));
